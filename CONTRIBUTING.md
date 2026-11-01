@@ -118,7 +118,6 @@ uv build --wheel
 git tag -a vX.Y.Z -m "ColdTrail X.Y.Z"
 git push origin vX.Y.Z
 gh release create vX.Y.Z --title "ColdTrail X.Y.Z" --notes-file CHANGELOG.md
-docker build -t coldtrail:X.Y.Z .
 ```
 
 Never tag a commit whose CI is red. Never `--no-verify`. Keep the release notes

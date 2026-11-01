@@ -267,10 +267,6 @@ src/coldtrail/
 - **FastAPI forms** need `python-multipart` (declared).
 - **`asyncio.create_task`** must run on the event loop; web job endpoints are
   `async def`, not `def`.
-- **Deployment:** Dockerfile builds a wheel with `uv` into a non-root
-  python:3.12-slim image (`/data`, 8765, `/healthz` healthcheck). Compose has an
-  optional `tor` profile. systemd units are hardened. OCI builds ignore
-  `HEALTHCHECK` (podman warning) — expected.
 - **Bluesky:** the AppView does not implement `com.atproto.repo.listRecords`
   (501); use `app.bsky.feed.getAuthorFeed`.
 - **Twitch:** existence requires `og:profile:username` matching the handle; a
@@ -348,7 +344,7 @@ src/coldtrail/
 
 ## What not to touch
 
-- `LICENSE`, `CITATION.cff`, and the security policy text.
+- `LICENSE` and the security policy text.
 - Formatting of unrelated files; do not reformat the whole tree in a fix PR.
 - Generated output: `dist/`, `.coverage`, caches, `tests/fixtures/contracts/_record.db*`.
 - Existing commit trailers or the historical `slopmanufacturer` login.
