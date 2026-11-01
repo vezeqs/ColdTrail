@@ -56,8 +56,7 @@ docs/         GitHub Pages site (sitemap, robots, privacy page)
 ```
 
 See [AGENTS.md](AGENTS.md) for the detailed architecture, invariants, and sharp
-edges, and [AUDIT.md](AUDIT.md) for the most recent audit and its accepted
-limitations.
+edges, and [SECURITY.md](SECURITY.md) for the accepted limitations.
 
 ## Adding a source
 

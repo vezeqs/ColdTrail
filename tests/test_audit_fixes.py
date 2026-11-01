@@ -1,4 +1,4 @@
-"""Regression tests for the 2026-10-30 audit (see AUDIT.md)."""
+"""Regression tests for the 2026-10-30 audit."""
 
 from __future__ import annotations
 

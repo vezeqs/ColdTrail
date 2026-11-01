@@ -11,7 +11,7 @@ real defects, then prove the fixed state.
 ## 0. Freeze and scope
 
 - `git status --short`, `git branch --show-current`, `git log --oneline -5`, `git remote -v`.
-- Read `AGENTS.md`, `CONTRIBUTING.md`, `SECURITY.md`, and `AUDIT.md`.
+- Read `AGENTS.md`, `CONTRIBUTING.md`, and `SECURITY.md`.
 - Confirm what is being shipped and whether push/tag/release/publish was explicitly approved.
 - Do not ship with a dirty tree, unresolved conflicts, or uncommitted generated artifacts.
 

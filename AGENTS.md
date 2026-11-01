@@ -343,7 +343,6 @@ src/coldtrail/
 - [ ] `uv run mypy` passes.
 - [ ] `uv run coldtrail doctor --offline` exits cleanly.
 - [ ] New behavior has a regression test named in the commit/PR.
-- [ ] `AUDIT.md` (or the current dated audit) is updated when fixing a finding.
 - [ ] README claims match the code; no hardcoded test counts.
 - [ ] No secrets, DBs, exports, or generated artifacts in the diff.
 
@@ -384,5 +383,4 @@ Export formats: `json`, `jsonl`, `csv` (`&table=`), `graphml`, `gexf`, `dot`,
 - `README.md` — user-facing overview, proof media, limits.
 - `CONTRIBUTING.md` — setup, adding a source, privacy invariants, release.
 - `SECURITY.md` — threat model, reporting, accepted limitations.
-- `AUDIT.md` — the 2026-10-30 audit record with tests and accepted risks.
 - `CHANGELOG.md` — user-visible changes.

@@ -321,7 +321,6 @@ code they show fall out of sync.
 - **Privacy:** [docs/privacy.html](docs/privacy.html)
 - **Security policy:** [SECURITY.md](SECURITY.md)
 - **Contributing:** [CONTRIBUTING.md](CONTRIBUTING.md)
-- **Audit record:** [AUDIT.md](AUDIT.md)
 - **Changelog:** [CHANGELOG.md](CHANGELOG.md)
 
 ## Safety and legal
