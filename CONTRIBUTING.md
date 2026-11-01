@@ -103,11 +103,9 @@ for the current coverage.
 
 ## Release
 
-Any push, tag, release, package/container publish, or deployment must run the
-`pre-ship-audit` skill (`.devin/skills/pre-ship-audit/SKILL.md`). It is also
-referenced by the always-on rule in `.devin/rules/pre-ship-audit.md`. Do not
-ship with failing tests, lint, build, or docs validation, and do not bypass
-checks.
+Any push, tag, release, package/container publish, or deployment must pass the
+full verification suite first. Do not ship with failing tests, lint, build, or
+docs validation, and do not bypass checks.
 
 Release sequence (only after explicit approval for that specific action):
 
