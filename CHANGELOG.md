@@ -4,6 +4,20 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Fixed
+
+- Webhook credentials passed as `--alert-target` are no longer written to the
+  audit log.
+- `watch` rejects a blank target with a usage error instead of a traceback.
+- `posts` and `harvest` reject a non-ISO `--since` instead of silently dropping
+  the filter.
+- `posts --no-deleted` now actually hides tombstones.
+- `Store.attachments(limit=None)` returns every row instead of raising
+  `sqlite3.IntegrityError`.
+- `evidence export` reports a corrupt digest as a one-line error with exit 2.
+
 ## [0.1.0] - 2026-11-01
 
 Initial release.

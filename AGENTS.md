@@ -144,7 +144,8 @@ src/coldtrail/
    Exports are created 0600 by `os.open`, not by a chmod after the write.
 7. **Secrets never reach output.** `doctor`/`config` redact proxy userinfo and
    key values; `_redact_argv` covers `--token`, `--passphrase`, `--api-key`,
-   `--secret`, `--key`, and `--proxy`. `redact_url_credentials` never raises.
+   `--secret`, `--key`, `--proxy`, and `--alert-target` (Discord/Slack webhook
+   URLs are credentials). `redact_url_credentials` never raises.
 8. **Persistence goes through `pivot.persist_pivot(store, report)`.** CLI, TUI,
    and web must not duplicate run-saving logic.
 9. **SQLite connections are thread-bound.** Each thread/request opens its own
@@ -214,7 +215,24 @@ src/coldtrail/
 - **`report._md_cell`** must escape `|` and collapse newlines, or harvested text
   breaks the table.
 - **Empty targets:** `Form(min_length=1)` accepts `" "`. Validate after
-  `.strip()` in `pivot()`, `harvest()`, `collect_follows()`, and web routes.
+  `.strip()` in `pivot()`, `harvest()`, `collect_follows()`, `watch()`, and web
+  routes. `watch` calls `pivot()` directly, so a blank target used to escape as
+  a `ValueError` traceback instead of a usage error.
+- **`--since` is validated by every command that accepts it.** `timeline` did;
+  `posts` and `harvest` did not, and `utils.is_after()` returns `True` when a
+  bound fails to parse, so a typo silently dropped the filter. A test asserts
+  exit 2 and the word `ISO` for both.
+- **Every query method accepts `limit=None`.** `Store.attachments()` bound
+  `LIMIT NULL` and raised `sqlite3.IntegrityError: datatype mismatch`; the
+  sibling queries (`profiles`, `posts`, `links`, `entities`, `clusters`) omit
+  the clause instead. Keep the surface consistent.
+- **`evidence export` converts `ValueError` to exit 2.** A hand-edited
+  `attachments.sha256` is rejected by `evidence_path()`, but the raw exception
+  used to print a Rich traceback.
+- **Boolean flags need both halves.** `posts --deleted` was declared as
+  `typer.Option("--deleted") = True`, so it could never be false and tombstones
+  could never be excluded. Use `--flag/--no-flag` whenever the default is
+  `True`.
 - **Corrupt JSON rows:** use `utils.json_loads(value, default)`; one bad
   `extra_json` must not crash a query.
 - **Audit hook:** catch `sqlite3.Error` as well as `OSError`/`ValueError`, or a
