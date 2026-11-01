@@ -1,7 +1,7 @@
 services:
   coldtrail:
     build: .
-    image: coldtrail:0.10.3
+    image: coldtrail:0.1.0
     container_name: coldtrail
     restart: unless-stopped
     ports:

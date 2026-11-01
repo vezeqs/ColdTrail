@@ -1,9 +1,6 @@
 # ColdTrail audit — 2026-10-30
 
-> Newer record: [AUDIT-2026-10-31.md](AUDIT-2026-10-31.md) (independent pass,
-> 20 findings: 19 fixed, 1 not a bug).
-
-Baseline: `master` @ `86fc516` (v0.9.0), 526 tests, ruff/mypy/bandit clean.
+Baseline: `master` @ `86fc516`, 526 tests, ruff/mypy/bandit clean.
 Scope: security, privacy, correctness, export integrity, documentation claims.
 Method: manual review of every high-risk module (`http.py`, `web/`, `store/`,
 `report.py`, `evidence.py`, `pivot.py`, `harvest.py`, `watch.py`, `analysis.py`,
@@ -225,7 +222,7 @@ without re-validating the destination. A public URL can redirect to
   **Test:** `test_markdown_tables_escape_pipes_and_newlines`.
 - **Docs (#20):** README no longer hardcodes a test count; AGENTS.md records 48
   top-level / 61 leaf commands; `test_docs_drift.py` guards both. The Pages
-  JSON-LD `softwareVersion` was also stale at 0.9.0 and now matches 0.10.0.
+  JSON-LD `softwareVersion` now tracks the package version.
 - **Config permissions (#21):** `doctor` warns and sets
   `privacy.config_mode_warning` when the config is group/world-readable.
   **Test:** `test_doctor_warns_about_world_readable_config`.
