@@ -4,10 +4,10 @@
 harvest profiles and posts into SQLite, correlate identities, and export evidence-grade
 dossiers — from a CLI, a TUI, or a local web UI.
 
-[![CI](https://github.com/vezeqs/Cold-Trail/actions/workflows/ci.yml/badge.svg)](https://github.com/vezeqs/Cold-Trail/actions/workflows/ci.yml)
+[![CI](https://github.com/vezeqs/ColdTrail/actions/workflows/ci.yml/badge.svg)](https://github.com/vezeqs/ColdTrail/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
-[![Docs](https://img.shields.io/badge/docs-live-2ea44f.svg)](https://vezeqs.github.io/Cold-Trail/)
+[![Docs](https://img.shields.io/badge/docs-live-2ea44f.svg)](https://vezeqs.github.io/ColdTrail/)
 
 ![Real coldtrail pivot output](docs/assets/cli-pivot.gif)
 
@@ -59,8 +59,8 @@ cryptographic identifier).*
 ## Quickstart
 
 ```bash
-git clone https://github.com/vezeqs/Cold-Trail
-cd Cold-Trail
+git clone https://github.com/vezeqs/ColdTrail
+cd ColdTrail
 uv sync
 
 uv run coldtrail pivot alice          # curated sources + correlation

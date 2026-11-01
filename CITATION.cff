@@ -10,7 +10,7 @@ authors:
 version: 0.10.3
 date-released: 2026-10-31
 license: MIT
-repository-code: "https://github.com/vezeqs/Cold-Trail"
+repository-code: "https://github.com/vezeqs/ColdTrail"
 keywords:
   - osint
   - threat-intelligence

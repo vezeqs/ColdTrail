@@ -385,7 +385,7 @@ def test_docs_sitemap_lists_main_pages():
 
     docs = Path(__file__).resolve().parent.parent / "docs"
     sitemap = (docs / "sitemap.xml").read_text(encoding="utf-8")
-    listed = set(re.findall(r"<loc>https://vezeqs\.github\.io/Cold-Trail/([^<]*)</loc>", sitemap))
+    listed = set(re.findall(r"<loc>https://vezeqs\.github\.io/ColdTrail/([^<]*)</loc>", sitemap))
     expected = {"", "quickstart.html", "sources.html", "comparison.html", "privacy.html"}
     assert listed == expected
     # 404 must stay out of the index

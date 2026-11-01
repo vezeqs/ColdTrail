@@ -471,7 +471,7 @@ def to_sarif(payload: dict[str, Any]) -> str:
                 "tool": {
                     "driver": {
                         "name": "ColdTrail",
-                        "informationUri": "https://github.com/vezeqs/Cold-Trail",
+                        "informationUri": "https://github.com/vezeqs/ColdTrail",
                         "version": __version__,
                         "rules": [rules[key] for key in sorted(rules)],
                     }
