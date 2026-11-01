@@ -343,6 +343,8 @@ def harvest(
         raise typer.BadParameter(f"{source!r} is an email source; use `pivot` for emails")
     if not username.strip().lstrip("@"):
         raise typer.BadParameter("username must be non-empty")
+    if since and epoch_seconds(since) is None:
+        raise typer.BadParameter(f"--since must be an ISO timestamp, got {since!r}")
 
     store = Store(settings.db_path)
     try:
@@ -527,6 +529,8 @@ def watch(
 ) -> None:
     """Monitor a target, alerting on new posts and profile edits."""
     settings = _settings(ctx)
+    if not target.strip().lstrip("@"):
+        raise typer.BadParameter("target must be a non-empty username or email")
     alerters = build_alerters(alert, alert_target) if alert and alert_target else []
     if alert and not alerters:
         console.print(f"[yellow]unknown or unconfigured alert kind: {alert}[/yellow]")

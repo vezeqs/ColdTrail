@@ -41,6 +41,8 @@ SENSITIVE_FLAGS = {
     "--secret",
     "--key",
     "--proxy",
+    # Discord/Slack webhook URLs and SMTP targets are credentials or PII.
+    "--alert-target",
 }
 
 

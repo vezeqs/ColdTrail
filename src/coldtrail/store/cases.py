@@ -153,7 +153,7 @@ class CasesMixin:
         run_id: int | None = None,
         target_type: str | None = None,
         target: str | None = None,
-        limit: int = 200,
+        limit: int | None = 200,
         offset: int = 0,
     ) -> list[dict[str, Any]]:
         clauses: list[str] = []
@@ -168,10 +168,11 @@ class CasesMixin:
             clauses.append("target = ? COLLATE NOCASE")
             params.append(target)
         where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
-        params.extend([limit, offset])
-        rows = self.conn.execute(
-            f"SELECT * FROM attachments {where} ORDER BY id DESC LIMIT ? OFFSET ?", params
-        ).fetchall()
+        sql = f"SELECT * FROM attachments {where} ORDER BY id DESC"
+        if limit is not None:
+            sql += " LIMIT ? OFFSET ?"
+            params.extend([limit, offset])
+        rows = self.conn.execute(sql, params).fetchall()
         return [dict(row) for row in rows]
 
     def attachment(self, attachment_id: int) -> dict[str, Any] | None:

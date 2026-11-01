@@ -111,7 +111,11 @@ def evidence_export(
         if row is None:
             typer.echo(f"attachment {attachment_id} not found", err=True)
             raise typer.Exit(code=1)
-        source = evidence_path(store, row["sha256"])
+        try:
+            source = evidence_path(store, row["sha256"])
+        except ValueError as exc:
+            typer.echo(str(exc), err=True)
+            raise typer.Exit(code=2) from exc
         if not source.is_file():
             typer.echo(f"evidence blob missing: {source}", err=True)
             raise typer.Exit(code=1)

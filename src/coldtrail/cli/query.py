@@ -59,11 +59,15 @@ def posts(
     username: Annotated[str | None, typer.Option("--username")] = None,
     source: Annotated[str | None, typer.Option("--source")] = None,
     since: Annotated[str | None, typer.Option("--since")] = None,
-    deleted: Annotated[bool, typer.Option("--deleted", help="Include tombstones")] = True,
+    deleted: Annotated[
+        bool, typer.Option("--deleted/--no-deleted", help="Include tombstones")
+    ] = True,
     limit: Annotated[int, typer.Option("-n", "--limit", min=1)] = 100,
     json_out: Annotated[bool, typer.Option("--json")] = False,
 ) -> None:
     """Query stored posts."""
+    if since and epoch_seconds(since) is None:
+        raise typer.BadParameter(f"--since must be an ISO timestamp, got {since!r}")
     with Store(_settings(ctx).db_path) as store:
         rows = store.posts(
             run_id=run,
